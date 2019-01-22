@@ -8,7 +8,7 @@
 ## Hello World!
 - `rustc main.rs` to compile
 - code
-```
+```rust
 // Line  comments --> end of line
 /* Block comments --> closing delimiter --> */
 
@@ -74,7 +74,7 @@ edition = "2018"
 3. raw identifiers, start with `r#`, used when
 3.1. need to use a name that's a keyword for another purpose
 3.2. Maybe call a function named match that is coming from a C library, where match is not a keyword
-```
+```rust
 let r#fn = "this variable is named 'fn' even though that's a keyword";
 
 // call a function named 'match'
@@ -82,17 +82,17 @@ r#match();
 ```
 
 ## Variables and Mutability
-1. By default, variable are immutable. You can use `mut` to make them mutable
-2. constant vs inmutable variable
-2.1. definition: use `const` -> constant, use `let` for variable
-2.2. `const` type need to be annotated
-2.3. `const` can be assigned in any scope, including global
-2.4. ex: `const PI: f64 = 3.1415`
-3. Shadowing
-3.1. declare new variable with same name as previous, the newer shadows previous
-3.2. Difference between Shadow and `mut`
-3.2.1. Transformation can be made, but variable are still imutable by shadowing.
-3.2.2. Type changes can be performed by shadowing, ex: 
+1. By default, variable are immutable. You can use `mut` to make them mutable  
+2. constant vs inmutable variable  
+2.1. definition: use `const` -> constant, use `let` for variable  
+2.2. `const` type need to be annotated  
+2.3. `const` can be assigned in any scope, including global  
+2.4. ex: `const PI: f64 = 3.1415`  
+3. Shadowing  
+3.1. declare new variable with same name as previous, the newer shadows previous  
+3.2. Difference between Shadow and `mut`  
+3.2.1. Transformation can be made, but variable are still imutable by shadowing.  
+3.2.2. Type changes can be performed by shadowing, ex:   
 ```
 // Following code is ok:
 let spaces = "     ";
@@ -129,13 +129,13 @@ let guess: u32 = "42".parse().expect("Need a Number!");
 | 128-bit | i128   | u128     |
 | arch    | isize  | usize    |
 
->   signed --> can use '-' sign
-> unsigned --> DO NOT need sign
-> arch     --> determinded by os, 64-bit or 32-bit
+>   signed --> can use '-' sign  
+> unsigned --> DO NOT need sign  
+> arch     --> determinded by os, 64-bit or 32-bit  
 
 1.2. Range
->   signed --> -(2^(n-1)) ~> 2^(n-1) - 1
-> unsigned --> 0 ~> 2^n - 1
+>   signed --> -(2^(n-1)) ~> 2^(n-1) - 1  
+> unsigned --> 0 ~> 2^n - 1  
 
 1.3. Integer literal
 
@@ -148,36 +148,36 @@ let guess: u32 = "42".parse().expect("Need a Number!");
 
 > suffix allowed (except byte), ex: `12u32`
 
-1.4. Overflow
-1.4.1. The variable value exceed its boundary
-1.4.2. It will halt in debug mode
-1.4.3. two's complement wrapping will happen in release edition.
+1.4. Overflow  
+1.4.1. The variable value exceed its boundary  
+1.4.2. It will halt in debug mode  
+1.4.3. two's complement wrapping will happen in release edition.  
 
-2. Floating-Point Types
-2.1. `f32` --> Single-precision float
-2.2. `f64` --> Double-precision float
-2.2. `f64` is default
+2. Floating-Point Types  
+2.1. `f32` --> Single-precision float  
+2.2. `f64` --> Double-precision float  
+2.2. `f64` is default  
 
-3. Numeric Operations
-> `+ - * / %`
+3. Numeric Operations  
+> `+ - * / %`  
+  
+4. Boolean Type  
+> Specified by `bool`, has 2 possible value `true` or `false`  
+> one byte in size  
 
-4. Boolean Type
-> Specified by `bool`, has 2 possible value `true` or `false`
-> one byte in size
-
-5. Character Type
-5.1. `char` type is the language's most primitive alphabetic type.
-5.2. `char` literal use single quotes, as opposed, string literals use double quotes
-5.3. Rust's `char` type represents a Unicode Scalar Value.
-
+5. Character Type  
+5.1. `char` type is the language's most primitive alphabetic type.  
+5.2. `char` literal use single quotes, as opposed, string literals use double quotes  
+5.3. Rust's `char` type represents a Unicode Scalar Value.  
+  
 
 ### Compound Type ###
-> Compound types can group multiple values into one type
+> Compound types can group multiple values into one type  
 
-1. Tuple Type
-1.1. A tuple groups together some values with a variety of type s into one compound type.
-1.2. Fixed length, cannot grow or shrink once declared.
-```
+1. Tuple Type  
+1.1. A tuple groups together some values with a variety of type s into one compound type.  
+1.2. Fixed length, cannot grow or shrink once declared.  
+```rust
 // Creation: comma-separated list of values inside parentheses
 let tup: (i32, f64, u8) = (500, 6.4, 1);
 
@@ -185,10 +185,10 @@ let (x, y, z)    = tup;   // Accessing by destructuring
 let five_hundred = tup.0; // Accessing by name.index (index from 0)
 ```
 
-2. Array Type
-2.1. Every item in same type
-2.2. Fixed length
-```
+2. Array Type  
+2.1. Every item in same type  
+2.2. Fixed length  
+```rust
 // Creation: comma-separated list of values inside square brackets
 let a = [1, 2, 3, 4, 5];
 let five = a[4]; // Accessing
@@ -200,12 +200,12 @@ let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",
               "Oct", "Nov", "Dec"];
 ```
 
-2.3 Compile not produce error when accessing an outbound element, but result in runtime error;
+2.3 Compile not produce error when accessing an outbound element, but result in runtime error;  
 
 
 ## Function
 - ex: 
-```
+```rust
 fn main () {
     println!("Hello world!");
     another_function();        // call by name and set of parentheses
@@ -227,7 +227,7 @@ fn other_function (x: i32, y: i32) {
 ```
 
 - Return a value
-```
+```rust
 fn main () {
     let x = 5; // this is a statement, it has no return value
     // let x = y = 5; // this is invalid in Rust
@@ -244,7 +244,7 @@ fn add5(a: i32) -> i32 { // Function return value:  -> type
 
 ## Control Flow
 ### `if` Expression
-```
+```rust
 // each are called **arm** in Rust
 if condition      { } 
 else if condition { }
@@ -296,19 +296,22 @@ let x = if condition {
 ## The `String` Type
 - Placed in Heap
 - ex: vs string literal
-```
+```rust
 let mut h = String::from("Hello"); // String Type,                 mutable, SLOW!                  
 let     w = "world!";              // String literal, hardcoded, immutable, FAST!
 h.push_str(",");                   // Mutalbe
 println!("{} {}", h, w);
 ```
+
 - `String` is made up by 3 parts
 1. A point to the memory that holds the content
 2. Length: how much memory curently used, in bytes
 3. Capacity: total amount of memory, in bytes
 - The group data 1-3 is stored in the Stack
 
-         `h`                   Heap Data
+```
+          h                    Heap Data
+
 | name     | value |        | index | value |
 |----------|-------|        |-------|-------|
 | ptr      |       | -----> |   0   |   H   |
@@ -316,17 +319,18 @@ println!("{} {}", h, w);
 | capacity |   5   |        |   2   |   l   |
                             |   3   |   l   |
                             |   4   |   o   |
+```
 
 ## Memory and Allocation
-- Steps to allocate an amount of memory on the heap:
-  1. Request --> at runtime by `String::from` (similar in every language)
-  2. Return  --> after the variable that owns it goes out of scope
-  2.1. Function `drop` is called
+- Steps to allocate an amount of memory on the heap:  
+  1. Request --> at runtime by `String::from` (similar in every language)  
+  2. Return  --> after the variable that owns it goes out of scope  
+  2.1. Function `drop` is called  
 
 
 ## Ways Variables and Data Interact
 - **Move**
-```
+```rust
 let x  = 5;
 let s1 = String::from("Hello");
 {
@@ -354,26 +358,26 @@ let s1 = String::from("Hello");
  */
 ```
 - **Clone**
-```
+```rust
 let s1 = String::from("Hello");
 let s2 = s1.clone;  // common method `close` is used if deeply copy is required;
 println!("s1 is '{}', s2 is '{}'", s1, s2);
 ```
 
-- Stack-only Data: **Copy**
-1. Special annotation -> `Copy`.
-2. Type with `Copy` trait, old var still valid after assignment
-3. Some of the types has `Copy` trait:
-  3.1. Integer types
-  3.2. `bool` type
-  3.3. floating point types
-  3.4. `char` type
-  3.5. tuples that only contain `Copy` types
+- Stack-only Data: **Copy**  
+1. Special annotation -> `Copy`.  
+2. Type with `Copy` trait, old var still valid after assignment  
+3. Some of the types has `Copy` trait:  
+  3.1. Integer types  
+  3.2. `bool` type  
+  3.3. floating point types  
+  3.4. `char` type  
+  3.5. tuples that only contain `Copy` types  
 
 
 ## References and Borrowing 
 ### Reference allows to refer to value without ownership of it, use `&value_name`
-```
+```rust
 fn main() {
     let s1 = String::from("Hello");
     let l1 = calculate_length(&s1); // &s1 creates a reference to s1 but now own it
@@ -408,14 +412,15 @@ fn calculate_length(s: &String) -> usize { // take reference as input
  *                                                         :...................:
  */
 ```
+
 ### Dereference is the opposite of reference, use `*ref_name`
 ### Mutable References allow to mutate data through referece, use `&mut var`
 - Only one mutable reference to a particular piece of data in particular scope.
 ### Data race happens when
 - (cause undefined behavior. difficult to diagnose and fix at runtime)
-1. Two or more pointers access the same data at the same time.
-2. At least one of the pointers is being used to write to the data.
-3. There's no mechanism being used to synchronize access to the data.
+  1. Two or more pointers access the same data at the same time.
+  2. At least one of the pointers is being used to write to the data.
+  3. There's no mechanism being used to synchronize access to the data.
 ### Dangling reference 
 - A pointer that references a location of memory that may have been given to someone else
 - Rust prevent this
@@ -424,7 +429,7 @@ fn calculate_length(s: &String) -> usize { // take reference as input
 2. References must always be valid (no dangling reference)
 
 ### Lifetime
-```
+```rust
 let mut book = Vec::new();
 book.push(...);             // <-- book **mutable** here
 
