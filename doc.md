@@ -274,17 +274,17 @@ let x = if condition {
 ### Stack
 - Last In, First Out: Stores values in the order it gets and removes in opposite order
 - Fast!!! 
-  1. No need to search places to put data, alway on top
-  2. Stores only known, fixed-sized data
+1. No need to search places to put data, alway on top
+2. Stores only known, fixed-sized data
 - term: Add    data --> pushing onto the stack
 - term: Remove data --> popping off  the stack
 
 ### Heap
 - Store data with unknown size at compiler time, or changable size
-- term: allocating (on the heap)
-  DATA -> require memory space -> OS to find a suitable slot -> return an adress point
+- term: allocating (on the heap)  
+  DATA -> require memory space -> OS to find a suitable slot -> return an adress point  
 - SLOW!!! and less organized
-  1. Need to follow point to access real data
+1. Need to follow point to access real data
 
 
 ## Ownership Rules
@@ -323,9 +323,9 @@ println!("{} {}", h, w);
 
 ## Memory and Allocation
 - Steps to allocate an amount of memory on the heap:  
-  1. Request --> at runtime by `String::from` (similar in every language)  
-  2. Return  --> after the variable that owns it goes out of scope  
-  2.1. Function `drop` is called  
+1. Request --> at runtime by `String::from` (similar in every language)  
+2. Return  --> after the variable that owns it goes out of scope  
+2.1. Function `drop` is called  
 
 
 ## Ways Variables and Data Interact
@@ -357,6 +357,7 @@ let s1 = String::from("Hello");
  * DATA **move**d to s2, s1 no longer valid
  */
 ```
+
 - **Clone**
 ```rust
 let s1 = String::from("Hello");
@@ -368,11 +369,11 @@ println!("s1 is '{}', s2 is '{}'", s1, s2);
 1. Special annotation -> `Copy`.  
 2. Type with `Copy` trait, old var still valid after assignment  
 3. Some of the types has `Copy` trait:  
-  3.1. Integer types  
-  3.2. `bool` type  
-  3.3. floating point types  
-  3.4. `char` type  
-  3.5. tuples that only contain `Copy` types  
+3.1. Integer types  
+3.2. `bool` type  
+3.3. floating point types  
+3.4. `char` type  
+3.5. tuples that only contain `Copy` types  
 
 
 ## References and Borrowing 
@@ -418,9 +419,9 @@ fn calculate_length(s: &String) -> usize { // take reference as input
 - Only one mutable reference to a particular piece of data in particular scope.
 ### Data race happens when
 - (cause undefined behavior. difficult to diagnose and fix at runtime)
-  1. Two or more pointers access the same data at the same time.
-  2. At least one of the pointers is being used to write to the data.
-  3. There's no mechanism being used to synchronize access to the data.
+1. Two or more pointers access the same data at the same time.
+2. At least one of the pointers is being used to write to the data.
+3. There's no mechanism being used to synchronize access to the data.
 ### Dangling reference 
 - A pointer that references a location of memory that may have been given to someone else
 - Rust prevent this
