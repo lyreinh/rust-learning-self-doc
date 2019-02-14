@@ -2,6 +2,7 @@
 	$size:	a4
 	page_number: true
 	footer: Rust Programming Language
+    ![bg](./paper.jpg)
 -->
 
 <center>
@@ -701,5 +702,83 @@ let slice = &a[1..3];        // Slice type is &[i32];
 
 --- 
 # Enums and Pattern Matching
+> To define a type by enumerating its possible values.
+> ```rust
+> enum EnumName {
+>     // enumerate all possible values
+> }
+> ```
 
 ![bg](./autumn.jpg)
+
+---
+## Something about Enum
+- Use `EnumName::member` to access the variants
+- Use with `struct` to bind values together
+- Each variant can have different types and amounts of associated data.
+- Any data type is allowed for enum variants
+- We're able to define methods on enums by `impl` just like `struct`
+
+![bg](./paper.jpg)
+
+---
+## `option` Enum
+> An `enum` that can encode the concept of a value being present or absent
+> ```rust
+> enum option<T> {
+>     Some(T),
+>     None,
+> }
+> ```
+- "_Null_ references: The Bilion Dollar Mistake"
+- `option` Enum is defined by the standard library, and included in the prelude.
+- `Some` example
+	```rust
+	let x: i8 = 5;
+	let y: Option<i8> = Some(5);
+    // let z = x + y; // Option<T> values cannot be used directly (even with <T>).
+
+	let absent_num: Option<i32> = None; //When use None, Option<T> type required
+	```
+
+![bg](./paper.jpg)
+
+---
+## `option` Enum (cont.)
+- When use a value of a type, compiler ensures it has a valid value
+- Only when using an `Option<T>` do we have to worry about possibly not having a value
+- Convert `Option<T>` to a `T` before performing `T` operations with it.
+
+![bg](./paper.jpg)
+
+---
+## Control Flow Operator
+- `match`
+	```rust
+	match an_enum {
+	    TheEnum::branch1 => {...},
+	    TheEnum::another =>  ... ,  
+	    _                =>  ... ,  // _ placeholder for other/default variant
+	}
+	```
+- `if let` one branch `match`
+	```rust
+	if let A = B {                      match B {
+        ...                 ==              A => {...},
+	}                                       _ => {},
+                                        }
+    // example: 
+    if let Some(3) = some_u8_value {
+        println!("Three");
+    }
+	```
+    
+![bg](./paper.jpg)
+
+---
+# Package, Crates, and Modules
+
+![bg](./autumn.jpg)
+
+---
+
